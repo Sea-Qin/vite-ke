@@ -1,10 +1,10 @@
-const chalk = require("chalk");
-const fs = require("fs-extra"); //文件夹处理
-const path = require("path");
-const { prompt } = require("inquirer");
-const { asyncCatchErrorHof, asyncErrorHof, catchErrorHof } = require("./error");
-const { logErrors, logWarnings, dim } = require("./logger");
-const validateNpmPackageName = require("validate-npm-package-name"); //npm包文件名合法校验
+const chalk = require('chalk');
+const fs = require('fs-extra'); //文件夹处理
+const path = require('path');
+const { prompt } = require('inquirer');
+const { asyncCatchErrorHof, asyncErrorHof, catchErrorHof } = require('./error');
+const { logErrors, logWarnings, dim } = require('./logger');
+const validateNpmPackageName = require('validate-npm-package-name'); //npm包文件名合法校验
 
 function handleInvalidName(result, name) {
   logErrors([`Invalid project name ${name}`]);
@@ -27,10 +27,10 @@ const create = async (projectName, options) => {
   if (!name) {
     const { projectName } = await prompt([
       {
-        type: "input",
-        name: "projectName",
-        message: "请输入项目名",
-        default: "vite-ke-template",
+        type: 'input',
+        name: 'projectName',
+        message: '请输入项目名',
+        default: 'vite-ke-template',
       },
     ]);
     name = projectName;
@@ -52,9 +52,9 @@ const create = async (projectName, options) => {
     } else {
       const { isRemovePre } = await prompt([
         {
-          type: "confirm",
+          type: 'confirm',
           message: `项目${name}已经存在，是否覆盖文件？选择 n 则退出创建`,
-          name: "isRemovePre",
+          name: 'isRemovePre',
         },
       ]);
       if (isRemovePre) {
@@ -62,7 +62,7 @@ const create = async (projectName, options) => {
         await fs.remove(targetDir);
         createProject(targetDir);
       } else {
-        return logWarnings(["退出创建"], dim.warn);
+        return logWarnings(['退出创建'], dim.warn);
       }
     }
   } else {
