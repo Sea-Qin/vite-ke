@@ -1,0 +1,22 @@
+{
+  "name": "vite-ke",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "vite-ke": "bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^10.0.0",
+    "fs-extra": "^11.1.0",
+    "inquirer": "^8.2.0",
+    "minimist": "^1.2.8",
+    "validate-npm-package-name": "^5.0.0"
+  }
+}
