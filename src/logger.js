@@ -1,9 +1,10 @@
-const chalk = require("chalk");
+const chalk = require('chalk');
 
 //log相关api
 const dim = {
-  error: "❌",
-  warn: "⚠️",
+  error: '❌',
+  warn: '⚠️',
+  start: '🌟',
 };
 function logErrors(errors, dim) {
   if (!errors) return;
@@ -20,6 +21,15 @@ function logWarnings(warnings, dim) {
   warnings.forEach((msg) => {
     const str = dim ? chalk.yellow.dim(dim, msg) : chalk.yellow(msg);
     console.warn(str);
+  });
+}
+
+function logInfos(infos, dim) {
+  if (!infos) return;
+
+  infos.forEach((msg) => {
+    const str = dim ? chalk.cyan.dim(dim, msg) : chalk.cyan(msg);
+    console.log(str);
   });
 }
 

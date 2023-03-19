@@ -4,6 +4,7 @@ const path = require('path');
 const { prompt } = require('inquirer');
 const { asyncCatchErrorHof, asyncErrorHof, catchErrorHof } = require('./error');
 const { logErrors, logWarnings, dim } = require('./logger');
+const { createProject } = require('./createProject');
 const validateNpmPackageName = require('validate-npm-package-name'); //npm包文件名合法校验
 
 function handleInvalidName(result, name) {
@@ -13,11 +14,11 @@ function handleInvalidName(result, name) {
   process.exit(1);
 }
 
-function createProject(targetDir) {
-  //执行真正的项目创建+模板拉取逻辑
-  // console.log("---gogogo", fs);
-  fs.mkdirSync(targetDir); //创建目录文件
-}
+// function createProject(name, targetDir) {
+//   //执行真正的项目创建+模板拉取逻辑
+//   console.log('---gogogo', name);
+//   fs.mkdirSync(targetDir); //创建目录文件
+// }
 
 const create = async (projectName, options) => {
   const cwd = options.cwd || process.cwd(); //获取当前执行node命令时的文件夹路径
@@ -60,7 +61,7 @@ const create = async (projectName, options) => {
       if (isRemovePre) {
         //...创建项目逻辑
         await fs.remove(targetDir);
-        createProject(targetDir);
+        createProject(name, targetDir);
       } else {
         return logWarnings(['退出创建'], dim.warn);
       }
